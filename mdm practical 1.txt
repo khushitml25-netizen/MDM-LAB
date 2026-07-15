@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>student information</title>
+    </head>
+    <body>
+
+        <h1 align="center"> Student Details for sports</h1>
+    <hr>
+    <strong>Please enter the student details below:</strong><br><br>
+    <form>
+        NAME : <input type="text" name="Student Name" placeholder="Enter your name"><br><br>
+        USN : <input type="text" name="USN" placeholder="Enter your USN"><br><br>
+        BRANCH : <input type="text" name="Branch" placeholder="Enter your branch"><br><br>
+        AGE : <input type="number" name="Age" placeholder="Enter your age"><br><br>
+        CONTACT NUMBER : <input type="number" name="Contact Number" placeholder="Enter your contact number"><br><br>
+        EMAIL : <input type="email" name="Email" placeholder="Enter your email"><br><br>
+        GENDER : <input type="radio" name="Gender" value="Male"> Male
+                 <input type="radio" name="Gender" value="Female"> Female
+                 <input type="radio" name="Gender" value="Other"> Other<br><br>
+        SPORTS : <input type="checkbox" name="Sports" value="Cricket"> Cricket
+                 <input type="checkbox" name="Sports" value="Football"> Football
+                 <input type="checkbox" name="Sports" value="Basketball"> Basketball
+                 <input type="checkbox" name="Sports" value="Tennis"> Tennis<br><br>
+                 <hr>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Clear">
+        <footer>
+            <p align="center">@S.B.Jain Institution Of Technology</p>
+        </footer>
+    </form>
+    </body>
+</html>
