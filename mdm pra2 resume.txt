@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Resume</title>
+
+    <style>
+        .top-header {
+            background-color: orangered;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        body {
+            background-color: lightpink;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: black;
+        }
+
+        section {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: orangered;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        img {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="top-header">
+        <h1>My Online Profile</h1>
+        <p>B.Tech Student | Web Developer</p>
+    </header>
+
+    <section class="personal-info">
+        <h2>Personal Information</h2>
+
+        <img src="khushi.jpg.jpeg" alt="Khushi Photo" width="120">
+
+        <p><strong>Name:</strong> Khushi Thakur</p>
+        <p><strong>Course:</strong> B.Tech CSE (AI & ML)</p>
+        <p><strong>College:</strong> S.B. Jain College of Engineering</p>
+        <p><strong>Age:</strong> 18</p>
+        <p><strong>Email:</strong> khushi@gmail.com</p>
+    </section>
+
+    <section>
+        <h2>Educational Qualifications</h2>
+
+        <table>
+            <tr>
+                <th>Qualification</th>
+                <th>Board/University</th>
+                <th>Year</th>
+                <th>Percentage/Status</th>
+            </tr>
+
+            <tr>
+                <td>10th</td>
+                <td>State Board</td>
+                <td>2023</td>
+                <td>82%</td>
+            </tr>
+
+            <tr>
+                <td>12th</td>
+                <td>State Board</td>
+                <td>2025</td>
+                <td>76%</td>
+            </tr>
+
+            <tr>
+                <td>B.Tech (CSE-AIML)</td>
+                <td>SBJITMR</td>
+                <td>2026 - Present</td>
+                <td>Currently Studying</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+
+        <table>
+            <tr>
+                <th>Skill</th>
+                <th>Level</th>
+            </tr>
+
+            <tr>
+                <td>HTML</td>
+                <td>Intermediate</td>
+            </tr>
+
+            <tr>
+                <td>CSS</td>
+                <td>Intermediate</td>
+            </tr>
+
+            <tr>
+                <td>JavaScript</td>
+                <td>Beginner</td>
+            </tr>
+
+            <tr>
+                <td>Java</td>
+                <td>Beginner</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Hobbies & Interests</h2>
+
+        <table>
+            <tr>
+                <th>Hobbies</th>
+            </tr>
+
+            <tr>
+                <td>Reading Books</td>
+            </tr>
+
+            <tr>
+                <td>Listening to Music</td>
+            </tr>
+
+            <tr>
+                <td>Coding</td>
+            </tr>
+
+            <tr>
+                <td>Playing Sports</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Contact Details</h2>
+
+        <table>
+            <tr>
+                <th>Details</th>
+                <th>Information</th>
+            </tr>
+
+            <tr>
+                <td>Phone</td>
+                <td>99348238XX</td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td>khushi@gmail.com</td>
+            </tr>
+
+            <tr>
+                <td>Address</td>
+                <td>Kamptee Road, Nagpur, Maharashtra</td>
+            </tr>
+
+            <tr>
+                <td>GitHub</td>
+                <td>github.com/Khushithakur</td>
+            </tr>
+        </table>
+    </section>
+
+</body>
+</html>
