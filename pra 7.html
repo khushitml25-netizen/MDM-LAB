@@ -1,0 +1,150 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive FAQ(CM25023)</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+
+        .faq-container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .faq {
+            background-color: white;
+            margin: 10px 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .question {
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .triangle {
+            font-size: 14px;
+        }
+
+        .answer {
+            padding: 15px;
+            display: none;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="faq-container">
+
+        <h1>College Help Portal - FAQ</h1>
+
+        <div class="faq">
+
+            <div class="question">
+                What are the college timings?
+                <span class="triangle">▶</span>
+            </div>
+
+            <div class="answer">
+                The college timings are from 9:00 AM to 4:00 PM.
+            </div>
+
+        </div>
+
+
+        <div class="faq">
+
+            <div class="question">
+                How can I contact the department?
+                <span class="triangle">▶</span>
+            </div>
+
+            <div class="answer">
+                You can contact the department office during college hours.
+            </div>
+
+        </div>
+
+
+        <div class="faq">
+
+            <div class="question">
+                Where can I find the exam timetable?
+                <span class="triangle">▶</span>
+            </div>
+
+            <div class="answer">
+                The exam timetable is available on the college notice board and website.
+            </div>
+
+        </div>
+
+
+        <div class="faq">
+
+            <div class="question">
+                How can I apply for leave?
+                <span class="triangle">▶</span>
+            </div>
+
+            <div class="answer">
+                You can apply for leave by submitting a leave application to your class teacher.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const questions = document.querySelectorAll(".question");
+
+        questions.forEach(function(question) {
+
+            question.addEventListener("click", function() {
+
+                const answer = this.nextElementSibling;
+                const triangle = this.querySelector(".triangle");
+
+                if (answer.style.display === "block") {
+
+                    answer.style.display = "none";
+                    triangle.textContent = "▶";
+
+                } else {
+
+                    answer.style.display = "block";
+                    triangle.textContent = "▼";
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
