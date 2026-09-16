@@ -1,0 +1,159 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Student Registration</h2>
+
+    <form id="registrationForm">
+
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+
+        <label>Email</label>
+        <input type="text" id="email" placeholder="Enter your email">
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <label>Mobile Number</label>
+        <input type="text" id="mobile" placeholder="Enter 10-digit mobile number">
+
+        <label>Course</label>
+        <input type="text" id="course" placeholder="Enter your course">
+
+        <button type="submit">Register</button>
+
+        <p id="message"></p>
+
+    </form>
+
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value;
+        let mobile = document.getElementById("mobile").value.trim();
+        let course = document.getElementById("course").value.trim();
+        let message = document.getElementById("message");
+
+        // Check mandatory fields
+        if (name === "" || email === "" || password === "" ||
+            mobile === "" || course === "") {
+
+            message.innerHTML = "Please fill all mandatory fields.";
+            message.style.color = "red";
+            return;
+        }
+
+        // Check email format
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            message.innerHTML = "Please enter a valid email address.";
+            message.style.color = "red";
+            return;
+        }
+
+        // Check password length
+        if (password.length < 6) {
+            message.innerHTML = "Password must be at least 6 characters.";
+            message.style.color = "red";
+            return;
+        }
+
+        // Check mobile number
+        let mobilePattern = /^[0-9]{10}$/;
+
+        if (!mobilePattern.test(mobile)) {
+            message.innerHTML = "Mobile number must contain exactly 10 digits.";
+            message.style.color = "red";
+            return;
+        }
+
+        // Successful registration
+        message.innerHTML = "Registration successful!";
+        message.style.color = "green";
+
+    });
+</script>
+
+</body>
+</html>
+```
+
+### Main validations used
+
+* **Mandatory fields:** Checks that no field is empty.
+* **Email:** Checks proper email format like `student@gmail.com`.
+* **Password:** Minimum **6 characters**.
+* **Mobile:** Exactly **10 digits**.
+* **Form submission:** JavaScript `addEventListener()` validates the form before submission.
+
+**Concepts used:** `getElementById()`, `addEventListener()`, `if-else`, Regular Expressions, `.trim()`, and `.length`.
