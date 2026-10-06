@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Personal Expense Tracker</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
+
+        <div class="max-w-6xl mx-auto px-4 py-6">
+
+            <div class="flex flex-col md:flex-row justify-between
+                        items-center gap-4">
+
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold">
+                        💰 Personal Expense Tracker
+                    </h1>
+
+                    <p class="text-blue-100 mt-1">
+                        Manage your daily expenses easily
+                    </p>
+                </div>
+
+                <button
+                    id="showForm"
+                    class="bg-white text-blue-600 px-5 py-2 rounded-lg
+                           font-semibold hover:bg-blue-50
+                           transition duration-300">
+
+                    + Add Expense
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- Main -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+
+        <!-- Statistics -->
+        <section class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+
+            <div class="bg-white rounded-xl shadow-md p-5 text-center
+                        hover:-translate-y-1 transition">
+
+                <div class="text-3xl">💵</div>
+
+                <p class="text-gray-500 mt-2">
+                    Total Expense
+                </p>
+
+                <h2 id="totalAmount"
+                    class="text-3xl font-bold text-blue-600">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow-md p-5 text-center
+                        hover:-translate-y-1 transition">
+
+                <div class="text-3xl">🧾</div>
+
+                <p class="text-gray-500 mt-2">
+                    Total Entries
+                </p>
+
+                <h2 id="totalEntries"
+                    class="text-3xl font-bold text-purple-600">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow-md p-5 text-center
+                        hover:-translate-y-1 transition">
+
+                <div class="text-3xl">📊</div>
+
+                <p class="text-gray-500 mt-2">
+                    Highest Expense
+                </p>
+
+                <h2 id="highestExpense"
+                    class="text-3xl font-bold text-pink-600">
+                    ₹0
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- Expense Form -->
+        <section id="expenseForm"
+                 class="hidden bg-white rounded-2xl shadow-lg
+                        p-6 mb-8">
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-5">
+                Add New Expense
+            </h2>
+
+            <form id="addExpenseForm">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                    <!-- Expense Name -->
+                    <div>
+
+                        <label for="expenseName"
+                               class="block font-semibold mb-2">
+                            Expense Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="expenseName"
+                            placeholder="Example: Lunch"
+                            class="w-full border rounded-lg px-4 py-3
+                                   focus:outline-none
+                                   focus:ring-2 focus:ring-blue-500">
+
+                    </div>
+
+
+                    <!-- Amount -->
+                    <div>
+
+                        <label for="amount"
+                               class="block font-semibold mb-2">
+                            Amount
+                        </label>
+
+                        <input
+                            type="number"
+                            id="amount"
+                            placeholder="Example: 250"
+                            class="w-full border rounded-lg px-4 py-3
+                                   focus:outline-none
+                                   focus:ring-2 focus:ring-blue-500">
+
+                    </div>
+
+
+                    <!-- Category -->
+                    <div>
+
+                        <label for="category"
+                               class="block font-semibold mb-2">
+                            Category
+                        </label>
+
+                        <select
+                            id="category"
+                            class="w-full border rounded-lg px-4 py-3
+                                   focus:outline-none
+                                   focus:ring-2 focus:ring-blue-500">
+
+                            <option value="Food">Food</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Education">Education</option>
+                            <option value="Other">Other</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Date -->
+                    <div>
+
+                        <label for="date"
+                               class="block font-semibold mb-2">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            class="w-full border rounded-lg px-4 py-3
+                                   focus:outline-none
+                                   focus:ring-2 focus:ring-blue-500">
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex gap-3 mt-6">
+
+                    <button
+                        type="submit"
+                        class="bg-blue-600 text-white px-6 py-3
+                               rounded-lg font-semibold
+                               hover:bg-blue-700 transition">
+
+                        Add Expense
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="cancelBtn"
+                        class="bg-gray-200 px-6 py-3 rounded-lg
+                               font-semibold hover:bg-gray-300">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- Expense List -->
+        <section class="bg-white rounded-2xl shadow-lg p-5 md:p-7">
+
+            <div class="flex flex-col md:flex-row
+                        justify-between items-start
+                        md:items-center gap-4 mb-6">
+
+                <div>
+
+                    <h2 class="text-2xl font-bold text-gray-800">
+                        My Expenses
+                    </h2>
+
+                    <p class="text-gray-500">
+                        Track your daily spending
+                    </p>
+
+                </div>
+
+
+                <!-- Filter -->
+                <select
+                    id="filterCategory"
+                    class="border rounded-lg px-4 py-2
+                           focus:outline-none
+                           focus:ring-2 focus:ring-blue-500">
+
+                    <option value="All">All Categories</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Education">Education</option>
+                    <option value="Other">Other</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Expenses -->
+            <div id="expenseList" class="space-y-4">
+            </div>
+
+
+            <!-- Empty Message -->
+            <div id="emptyMessage"
+                 class="text-center py-10 text-gray-500">
+
+                <div class="text-5xl mb-3">
+                    💸
+                </div>
+
+                <p class="text-lg font-semibold">
+                    No expenses available
+                </p>
+
+                <p class="text-sm">
+                    Add an expense to start tracking.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-gray-600">
+
+        <p>
+            Personal Expense Tracker | HTML + Tailwind CSS + JavaScript
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        // Array containing expense objects
+
+        let expenses = [
+            {
+                id: 1,
+                name: "Lunch",
+                amount: 150,
+                category: "Food",
+                date: "2026-10-06"
+            },
+            {
+                id: 2,
+                name: "Bus Travel",
+                amount: 80,
+                category: "Travel",
+                date: "2026-10-05"
+            }
+        ];
+
+
+        // Get HTML elements
+
+        const expenseForm =
+            document.getElementById("expenseForm");
+
+        const showForm =
+            document.getElementById("showForm");
+
+        const cancelBtn =
+            document.getElementById("cancelBtn");
+
+        const addExpenseForm =
+            document.getElementById("addExpenseForm");
+
+        const expenseName =
+            document.getElementById("expenseName");
+
+        const amount =
+            document.getElementById("amount");
+
+        const category =
+            document.getElementById("category");
+
+        const date =
+            document.getElementById("date");
+
+        const expenseList =
+            document.getElementById("expenseList");
+
+        const emptyMessage =
+            document.getElementById("emptyMessage");
+
+        const filterCategory =
+            document.getElementById("filterCategory");
+
+
+        // Statistics
+
+        const totalAmount =
+            document.getElementById("totalAmount");
+
+        const totalEntries =
+            document.getElementById("totalEntries");
+
+        const highestExpense =
+            document.getElementById("highestExpense");
+
+
+        // Show form
+
+        showForm.addEventListener("click", function () {
+
+            expenseForm.classList.toggle("hidden");
+
+        });
+
+
+        // Cancel form
+
+        cancelBtn.addEventListener("click", function () {
+
+            expenseForm.classList.add("hidden");
+
+            addExpenseForm.reset();
+
+        });
+
+
+        // Add expense
+
+        addExpenseForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const name = expenseName.value.trim();
+
+            const money = Number(amount.value);
+
+
+            // Validation
+
+            if (name === "" || money <= 0) {
+
+                alert("Please enter valid expense details.");
+
+                return;
+
+            }
+
+
+            // Create expense object
+
+            const newExpense = {
+
+                id: Date.now(),
+
+                name: name,
+
+                amount: money,
+
+                category: category.value,
+
+                date: date.value
+
+            };
+
+
+            // Add object to array
+
+            expenses.push(newExpense);
+
+
+            // Reset form
+
+            addExpenseForm.reset();
+
+            expenseForm.classList.add("hidden");
+
+
+            // Update display
+
+            displayExpenses();
+
+        });
+
+
+        // Display expenses
+
+        function displayExpenses() {
+
+            expenseList.innerHTML = "";
+
+
+            const selectedCategory =
+                filterCategory.value;
+
+
+            let filteredExpenses = expenses.filter(function(expense) {
+
+                if (selectedCategory === "All") {
+
+                    return true;
+
+                }
+
+                return expense.category === selectedCategory;
+
+            });
+
+
+            // Empty message
+
+            if (filteredExpenses.length === 0) {
+
+                emptyMessage.classList.remove("hidden");
+
+            } else {
+
+                emptyMessage.classList.add("hidden");
+
+            }
+
+
+            // Display each expense
+
+            filteredExpenses.forEach(function(expense) {
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "border rounded-xl p-4 flex flex-col md:flex-row " +
+                    "justify-between gap-4 hover:shadow-md transition";
+
+
+                card.innerHTML = `
+
+                    <div>
+
+                        <h3 class="text-lg font-bold text-gray-800">
+                            ${expense.name}
+                        </h3>
+
+                        <p class="text-gray-500 mt-1">
+                            📂 ${expense.category}
+                        </p>
+
+                        <p class="text-sm text-gray-400 mt-1">
+                            📅 ${expense.date}
+                        </p>
+
+                    </div>
+
+
+                    <div class="flex items-center gap-3">
+
+                        <span class="text-xl font-bold text-blue-600">
+                            ₹${expense.amount}
+                        </span>
+
+                        <button
+                            onclick="deleteExpense(${expense.id})"
+                            class="bg-red-100 text-red-700
+                                   px-3 py-2 rounded-lg
+                                   hover:bg-red-200 transition">
+
+                            Delete
+
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                expenseList.appendChild(card);
+
+            });
+
+
+            updateStatistics();
+
+        }
+
+
+        // Delete expense
+
+        function deleteExpense(id) {
+
+            expenses = expenses.filter(function(expense) {
+
+                return expense.id !== id;
+
+            });
+
+
+            displayExpenses();
+
+        }
+
+
+        // Update statistics
+
+        function updateStatistics() {
+
+            let total = 0;
+
+            let highest = 0;
+
+
+            expenses.forEach(function(expense) {
+
+                total = total + expense.amount;
+
+
+                if (expense.amount > highest) {
+
+                    highest = expense.amount;
+
+                }
+
+            });
+
+
+            totalAmount.textContent =
+                "₹" + total;
+
+            totalEntries.textContent =
+                expenses.length;
+
+            highestExpense.textContent =
+                "₹" + highest;
+
+        }
+
+
+        // Filter expenses
+
+        filterCategory.addEventListener("change", function() {
+
+            displayExpenses();
+
+        });
+
+
+        // Initial display
+
+        displayExpenses();
+
+    </script>
+
+</body>
+</html>
